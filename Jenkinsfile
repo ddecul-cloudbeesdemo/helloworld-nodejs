@@ -1,13 +1,14 @@
 pipeline {
  agent none
   stages {
-    stage('Say Hello') {
-      // agent { label 'nodejs-app' }  
-      agent { label 'jdk10' }
+    stage('Test') {
+      agent { label 'nodejs-app' }  
      steps {
-        echo 'Hello World!'   
+      container('nodejs'){  
+      echo 'Hello World!'   
         sh 'java -version'
       }
+     }
     }
   }
 }
